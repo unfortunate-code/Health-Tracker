@@ -1,4 +1,4 @@
 pytz
-streamlit
 filelock
+streamlit
 streamlit-modal
