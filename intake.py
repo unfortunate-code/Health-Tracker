@@ -24,7 +24,10 @@ if "intake" not in st.session_state:
 st.title("Health tracker")
 
 remove_entries_modal = Modal(
-    "Remove Entries", key="remove_entries_modal", padding=20, max_width=744
+    "Remove Entries",
+    key="remove_entries_modal",
+    padding=20,
+    max_width=744,
 )
 
 plot_modal = Modal("Plot", key="plot_modal", padding=20, max_width=744)
@@ -139,9 +142,12 @@ def delete_entries():
         if key.startswith("r_") and st.session_state[key]:
             if key == "r_sleep":
                 st.session_state.intake[today].pop("sleep", None)
+                del st.session_state[key]
             elif key == "r_water":
                 st.session_state.intake[today].pop("water", None)
+                del st.session_state[key]
             elif key.startswith("r_food"):
+                del st.session_state[key]
                 i = int(key.split("_")[-1])
                 food_indices_to_remove.append(i)
     st.session_state.intake[today]["food"] = [
